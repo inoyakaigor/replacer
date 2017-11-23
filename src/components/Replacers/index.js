@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Replacer from './Replacer.js'
+import Replacer from 'Replacer/index.js'
 
 export default class Replacers extends Component {
     render () {
