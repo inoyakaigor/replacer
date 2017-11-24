@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-// import 'index.css'
+import './index.css'
 
 export default class Replacer extends Component {
     render () {
-        return <div>
+        return <div className='replacer'>
             <label>
                 <input />
             </label>
