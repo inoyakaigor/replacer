@@ -4,13 +4,22 @@ import Replacers from 'Replacers'
 export default class App extends Component {
     constructor() {
         super()
-        const a = {a:1, b:2}
-        this.state = {...a}
+        this.state = {
+            replacers: [
+                {from: '', to: ''},
+                {from: '', to: ''},
+                {from: '', to: ''},
+                {from: '', to: ''},
+                {from: '', to: ''},
+                {from: '', to: ''},
+            ]
+        }
     }
 
     render () {
+        const {replacers} = this.state
         return [
-            <Replacers key='replacers'/>,
+            <Replacers key='replacers' replacers={replacers}/>,
             // <AddButton>,
             // <Output>
         ]

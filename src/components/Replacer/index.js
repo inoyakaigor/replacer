@@ -3,12 +3,13 @@ import './index.css'
 
 export default class Replacer extends Component {
     render () {
+        const {from, to} = this.props
         return <div className='replacer'>
             <label>
-                <input />
+                <input value={from}/>
             </label>
             <label>
-                <input />
+                <input to={to}/>
             </label>
         </div>
     }
