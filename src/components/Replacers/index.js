@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Replacer from 'Replacer/index.js'
-import './index.css'
+import css from './index.css'
 
 export default class Replacers extends Component {
     render () {
@@ -8,11 +8,11 @@ export default class Replacers extends Component {
         const replacersList = replacers.map((replacer, index) =>
             <Replacer key={index} from={replacer.from} to={replacer.to}/>
         )
-        return <section className='replacers'>
-            <header className='header'>
-                <h2 className='change'>Замена</h2>
-                <div className='from'>Что</div>
-                <div className='to'>Чем</div>
+        return <section className={css.replacers}>
+            <header className={css.header}>
+                <h2 className={css.change}>Замена</h2>
+                <div className={css.from}>Что</div>
+                <div className={css.to}>Чем</div>
             </header>
             {replacersList}
         </section>
