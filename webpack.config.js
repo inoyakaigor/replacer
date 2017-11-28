@@ -29,8 +29,7 @@ const FaviconsWebpackPluginConfig = {
 }
 
 const ExtractTextPluginConfig = {
-    filename: 'styles.css',
-    ignoreOrder: true
+    filename: 'styles.css'
 }
 
 module.exports = {
