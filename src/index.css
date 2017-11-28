@@ -1,3 +1,7 @@
+:root {
+    --default-margin: 20px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
