@@ -1,10 +1,35 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const HtmlWebpackPluginConfig = {
   template: __dirname + '/index.html',
   filename: 'index.html',
   inject: 'body'
-})
+}
+
+const FaviconsWebpackPluginConfig = {
+    logo: './favicon.png',
+    persistentCache: true,
+    inject: true,
+    theme_color: '#4FD1D9',
+    icons: {
+      android: true,
+      appleIcon: true,
+      appleStartup: true,
+      coast: false,
+      favicons: true,
+      firefox: true,
+      opengraph: true,
+      twitter: true,
+      yandex: true,
+      windows: true
+    }
+}
+
+const ExtractTextPluginConfig = {
+    filename: 'styles.css',
+    ignoreOrder: true
+}
 
 module.exports = {
     entry: __dirname + '/src/index.js',
@@ -45,7 +70,10 @@ module.exports = {
             }
         ]
     },
-    plugins: [HtmlWebpackPluginConfig],
+    plugins: [
+        new FaviconsWebpackPlugin(FaviconsWebpackPluginConfig),
+        new HtmlWebpackPlugin(HtmlWebpackPluginConfig),
+    ],
     resolve: {
       modules: [path.resolve(__dirname, "src/components/"), "node_modules"]
     }
