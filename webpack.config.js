@@ -1,6 +1,8 @@
-const path = require('path');
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
 const HtmlWebpackPluginConfig = {
   template: __dirname + '/index.html',
   filename: 'index.html',
@@ -53,10 +55,16 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    { loader: "style-loader" },
-                    { loader: "css-loader" }
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: {
+                        loader: "css-loader",
+                        query: {
+                            modules: true,
+                            localIdentName: '[name]-[local]--[hash:base64:5]'
+                        }
+                    }
+                })
             },
             {
                 test: /\.(png|svg|jpe?g|gif)$/,
@@ -73,6 +81,7 @@ module.exports = {
     plugins: [
         new FaviconsWebpackPlugin(FaviconsWebpackPluginConfig),
         new HtmlWebpackPlugin(HtmlWebpackPluginConfig),
+        new ExtractTextPlugin(ExtractTextPluginConfig),
     ],
     resolve: {
       modules: [path.resolve(__dirname, "src/components/"), "node_modules"]
