@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Replacers from 'Replacers'
+import AddButton from 'AddButton'
 
 export default class App extends Component {
     constructor() {
@@ -20,7 +21,7 @@ export default class App extends Component {
         const {replacers} = this.state
         return [
             <Replacers key='replacers' replacers={replacers}/>,
-            // <AddButton>,
+            <AddButton key='AddButton'/>,
             // <Output>
         ]
     }
