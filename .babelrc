@@ -1,6 +1,7 @@
 {
     "presets": ["react", "stage-3"],
     "plugins": [
-        ["syntax-object-rest-spread", { "useBuiltIns": "true" }]
+        ["syntax-object-rest-spread", { "useBuiltIns": "true" }],
+        "transform-class-properties"
     ]
 }

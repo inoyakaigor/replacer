@@ -1,9 +1,10 @@
-.replacer {
-    width: 50vw;
+.replacer label {
+    width: 50%;
+    display: inline-block;
 }
 
 .replacer input {
     height: 36px;
-    width: calc(25vw - var(--default-margin));
-    margin: 10px;
+    width: calc(100% - var(--default-margin));
+    margin: calc(var(--default-margin) / 2);
 }

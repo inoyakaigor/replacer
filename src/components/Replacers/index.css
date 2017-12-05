@@ -1,8 +1,7 @@
 .header {
     display: flex;
     flex-wrap: wrap;
-    width: calc(50% - var(--default-margin));
-    margin: var(--default-margin) 0 0;
+    margin: 0 calc(var(--default-margin) / 2);
 }
 
 .header .change {
@@ -13,13 +12,24 @@
     text-transform: uppercase;
 }
 
+.header .from {
+    margin-right: calc(var(--default-margin) * 1.5);
+}
+
 .header .from,
 .header .to {
-    width: 50%;
+    width: calc(50% - var(--default-margin));
 }
 
 .replacers {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.add-button-wrapper {
+    text-align: right;
+    padding: calc(var(--default-margin) / 2);
 }

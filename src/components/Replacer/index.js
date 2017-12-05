@@ -3,13 +3,19 @@ import css from './index.css'
 
 export default class Replacer extends Component {
     render () {
-        const {from, to} = this.props
+        const {
+            from,
+            to,
+            onChangeFrom,
+            onChangeTo
+        } = this.props
+
         return <div className={css.replacer}>
             <label>
-                <input value={from}/>
+                <input value={from} onChange={e => onChangeFrom(e.target.value)}/>
             </label>
             <label>
-                <input to={to}/>
+                <input to={to} onChange={e => onChangeTo(e.target.value)}/>
             </label>
         </div>
     }
