@@ -9,21 +9,34 @@ export default class App extends Component {
         super()
         this.state = {
             replacers: [
-                {...replacer}
+                ...this.getReplacers()
             ],
             input: '',
             output: ''
         }
     }
 
-    addReplacer = () => {
-        this.setState({replacers : [...this.state.replacers, {...replacer}]})
+    getReplacers = () => {
+        const savedReplacers = localStorage.getItem('replacers')
+        if (savedReplacers)
+            return JSON.parse(savedReplacers)
+        else
+            return [{...replacer}]
     }
+
+    addReplacer = () =>
+        this.setState({
+            replacers : [
+                ...this.state.replacers,
+                {...replacer}
+            ]
+        })
 
     onChangeReplacer = (index, value, destination) => {
         const replacers = [...this.state.replacers]
         replacers[index][destination] = value
         this.setState({replacers})
+        localStorage.setItem('replacers', JSON.stringify(replacers))
     }
 
     onChangeFrom = (index, value) => this.onChangeReplacer(index, value, 'from' )
