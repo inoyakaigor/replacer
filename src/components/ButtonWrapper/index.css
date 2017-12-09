@@ -1,0 +1,5 @@
+.button-wrapper {
+    width: 100%;
+    text-align: right;
+    padding: calc(var(--default-margin) / 2);
+}

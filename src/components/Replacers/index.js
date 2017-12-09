@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
-import Replacer from 'Replacer/index.js'
-import AddButton from 'AddButton'
 import css from './index.css'
+
+import Replacer from 'Replacer/index.js'
+import ButtonWrapper from 'ButtonWrapper'
+import Button from 'Button'
 
 export default class Replacers extends Component {
     render () {
@@ -17,14 +19,16 @@ export default class Replacers extends Component {
         )
         return <section className={css.replacers}>
             <header className={css.header}>
-                <h2 className={css.change}>Замена</h2>
+                <h2 className={css.change}>Пошаговая обработка текста регулярками</h2>
                 <div className={css.from}>Что</div>
                 <div className={css.to}>Чем</div>
             </header>
             {replacersList}
-            <footer className={css['add-button-wrapper']}>
-                <AddButton key='AddButton' onClick={this.props.addReplacer}/>
-            </footer>
+            <ButtonWrapper>
+                <Button key='button' onClick={this.props.addReplacer}>
+                    <span>➕</span>&nbsp;Добавить правило замены
+                </Button>
+            </ButtonWrapper>
         </section>
     }
 }

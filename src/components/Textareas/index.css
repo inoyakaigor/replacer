@@ -1,0 +1,20 @@
+.textareas-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: calc(var(--app-width) * 2 - var(--default-margin));
+    margin: 0 auto;
+    height: 80vh;
+}
+
+.textareas-container label {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - var(--default-margin));
+}
+
+.textareas-container label textarea {
+    height: 100%;
+    white-space: pre;
+}

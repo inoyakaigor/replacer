@@ -6,10 +6,11 @@
 
 .header .change {
     width: 100%;
-    text-align: center;
     padding: 0 0 var(--default-margin);
-    font-size: 35px;
+    font-size: 26px;
     text-transform: uppercase;
+    text-align: justify;
+    letter-spacing: 0.5px;
 }
 
 .header .from {
@@ -25,11 +26,6 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    width: 50vw;
+    width: var(--app-width);
     margin: 0 auto;
-}
-
-.add-button-wrapper {
-    text-align: right;
-    padding: calc(var(--default-margin) / 2);
 }

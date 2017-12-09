@@ -1,5 +1,6 @@
 :root {
     --default-margin: 20px;
+    --app-width: 50vw;
 }
 
 * {
