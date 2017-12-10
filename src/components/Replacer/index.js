@@ -15,7 +15,7 @@ export default class Replacer extends Component {
                 <input value={from} onChange={e => onChangeFrom(e.target.value)}/>
             </label>
             <label>
-                <input to={to} onChange={e => onChangeTo(e.target.value)}/>
+                <input value={to} onChange={e => onChangeTo(e.target.value)}/>
             </label>
         </div>
     }
