@@ -17,4 +17,6 @@
 .textareas-container label textarea {
     height: 100%;
     white-space: pre;
+    resize: vertical;
+    font-size: 13px
 }

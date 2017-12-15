@@ -47,10 +47,19 @@ export default class App extends Component {
     processText = () => {
         let output = ''
         const {input, replacers} = this.state
+        const n = String.fromCharCode(10)
+        const r = String.fromCharCode(13)
         output = input
 
         replacers.forEach(replacer => {
-            output = output.replace(new RegExp(replacer.from, 'gi'), replacer.to)
+            let replacerTo = replacer.to
+            if (/\\n/.test(replacer.to))
+                replacerTo = replacer.to.split('\\n').join(n)
+
+            if (/\\r/.test(replacer.to))
+                replacerTo = replacer.to.split('\\r').join(r)
+
+            output = output.replace(new RegExp(replacer.from, 'gi'), replacerTo)
         })
 
         this.setState({output})

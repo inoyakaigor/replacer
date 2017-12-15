@@ -4,7 +4,7 @@
 }
 
 .replacer input {
-    font-size: 16px;
+    font-size: 14px;
     width: calc(100% - var(--default-margin));
     margin: calc(var(--default-margin) / 2);
     padding: calc(var(--default-margin) / 2);

@@ -4,7 +4,7 @@ export default class Input extends Component {
     render () {
         return <label>
             До
-            <textarea onChange={this.props.onChange}/>
+            <textarea onChange={this.props.onChange} spellCheck='false'/>
         </label>
     }
 }

@@ -12,8 +12,10 @@ const HtmlWebpackPluginConfig = {
 const FaviconsWebpackPluginConfig = {
     logo: './favicon.png',
     persistentCache: true,
+    prefix: 'icons/',
     inject: true,
     theme_color: '#4FD1D9',
+    background: '#4FD1D9',
     icons: {
       android: true,
       appleIcon: true,
@@ -80,7 +82,7 @@ module.exports = {
     plugins: [
         new FaviconsWebpackPlugin(FaviconsWebpackPluginConfig),
         new HtmlWebpackPlugin(HtmlWebpackPluginConfig),
-        new ExtractTextPlugin(ExtractTextPluginConfig),
+        new ExtractTextPlugin(ExtractTextPluginConfig)
     ],
     resolve: {
       modules: [path.resolve(__dirname, "src/components/"), "node_modules"]
