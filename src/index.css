@@ -1,6 +1,8 @@
 :root {
     --default-margin: 20px;
     --app-width: 50vw;
+    --theme-main-color: #2196F3;
+    --theme-second-color: #efefef;
 }
 
 * {

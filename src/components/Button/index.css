@@ -1,8 +1,17 @@
 .button {
     padding: 7px 6px 6px;
     border: 0;
-    background: #efefef;
+    background: var(--theme-second-color);
     border-radius: 0px;
     font-size: 13px;
     cursor: pointer;
+    outline: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.button:focus {
+    outline: 1px solid var(--theme-main-color);
 }

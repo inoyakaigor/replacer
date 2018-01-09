@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import css from './index.css'
 
-import Replacer from 'Replacer/index.js'
+import Replacer from 'Replacer'
 import ButtonWrapper from 'ButtonWrapper'
 import Button from 'Button'
 

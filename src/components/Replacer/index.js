@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import css from './index.css'
 
+import Switch from 'Switch'
+
 export default class Replacer extends Component {
     render () {
         const {
@@ -11,10 +13,11 @@ export default class Replacer extends Component {
         } = this.props
 
         return <div className={css.replacer}>
-            <label>
+            <Switch checked={true}/>
+            <label className={css.label}>
                 <input value={from} onChange={e => onChangeFrom(e.target.value)}/>
             </label>
-            <label>
+            <label className={css.label}>
                 <input value={to} onChange={e => onChangeTo(e.target.value)}/>
             </label>
         </div>
