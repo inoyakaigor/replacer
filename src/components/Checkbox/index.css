@@ -1,0 +1,41 @@
+label.checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 0.1rem 0.2rem;
+}
+
+label.checkbox input {
+    display: none;
+}
+
+label.checkbox .label {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    font-size: 12px
+}
+
+label > input:checked + svg > polyline.tick{
+    stroke-dashoffset: 0;
+    stroke: var(--theme-main-color);
+}
+
+.icon {
+    height: 18px;
+    width: 18px;
+    margin: 0 0.1rem 0 0;
+    padding: 0.1rem;
+    border: 2px solid var(--theme-second-color);
+    border-radius: 2px;
+}
+
+.tick {
+    fill: none;
+    stroke-dasharray: 11; /* this is the length of the line */
+    stroke-dashoffset: 11; /* this is the length of the line */
+    stroke-width: 1.5;
+    transform: scale(2);
+    transition: stroke-dashoffset 0.25s ease-in;
+}

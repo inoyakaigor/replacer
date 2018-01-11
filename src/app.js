@@ -44,6 +44,8 @@ export default class App extends Component {
 
     onChangeInput = ({target: {value}}) => this.setState({input: value})
 
+    onCheckModificator = (index, modificator, checked) => {console.log(index, modificator, checked)}
+
     processText = () => {
         let output = ''
         const {input, replacers} = this.state
@@ -72,7 +74,8 @@ export default class App extends Component {
                 replacers: replacers,
                 addReplacer: this.addReplacer,
                 onChangeFrom: this.onChangeFrom,
-                onChangeTo: this.onChangeTo
+                onChangeTo: this.onChangeTo,
+                onCheckModificator: this.onCheckModificator
         }
 
         const textareasProps = {

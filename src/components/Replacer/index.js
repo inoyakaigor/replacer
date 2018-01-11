@@ -2,8 +2,15 @@ import React, {Component} from 'react'
 import css from './index.css'
 
 import Switch from 'Switch'
+import Checkbox from 'Checkbox'
 
 export default class Replacer extends Component {
+    onCheckModificator = (modificator, checked) => this.props.onCheckModificator(modificator, checked)
+
+    onCheckG = checked => this.onCheckModificator('g', checked)
+    onCheckI = checked => this.onCheckModificator('i', checked)
+    onCheckM = checked => this.onCheckModificator('m', checked)
+
     render () {
         const {
             from,
@@ -20,6 +27,9 @@ export default class Replacer extends Component {
             <label className={css.label}>
                 <input value={to} onChange={e => onChangeTo(e.target.value)}/>
             </label>
+            <Checkbox checked={true} label="g" onChange={this.onCheckG}/>
+            <Checkbox checked={true} label="i" onChange={this.onCheckI}/>
+            <Checkbox checked={true} label="m" onChange={this.onCheckM}/>
         </div>
     }
 }

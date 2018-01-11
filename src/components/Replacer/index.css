@@ -1,3 +1,8 @@
+.replacer {
+    display: flex;
+    align-items: center;
+}
+
 .replacer .label {
     width: 40%;
     display: inline-block;

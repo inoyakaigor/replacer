@@ -7,7 +7,13 @@ import Button from 'Button'
 
 export default class Replacers extends Component {
     render () {
-        const {replacers, onChangeFrom, onChangeTo} = this.props
+        const {
+            replacers,
+            onChangeFrom,
+            onChangeTo,
+            onCheckModificator
+        } = this.props
+
         const replacersList = replacers.map((replacer, index) =>
             <Replacer
                 key={index}
@@ -15,6 +21,7 @@ export default class Replacers extends Component {
                 to={replacer.to}
                 onChangeFrom={value => onChangeFrom(index, value)}
                 onChangeTo={value => onChangeTo(index, value)}
+                onCheckModificator={(modificator, checked) => onCheckModificator(index, modificator, checked)}
             />
         )
         return <section className={css.replacers}>
