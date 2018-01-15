@@ -5,31 +5,39 @@ import Switch from 'Switch'
 import Checkbox from 'Checkbox'
 
 export default class Replacer extends Component {
-    onCheckModificator = (modificator, checked) => this.props.onCheckModificator(modificator, checked)
 
-    onCheckG = checked => this.onCheckModificator('g', checked)
-    onCheckI = checked => this.onCheckModificator('i', checked)
-    onCheckM = checked => this.onCheckModificator('m', checked)
+    constructor(props) {
+        super(props);
+        ['g', 'i', 'm'].forEach(mod => {
+            this[`onCheck${mod.toUpperCase()}`] = checked => this.onCheckModificator(mod, checked)
+        })
+    }
+
+    onCheckModificator = (modificator, checked) => this.props.onCheckModificator(modificator, checked)
 
     render () {
         const {
             from,
             to,
+            active,
+            mods = '',
             onChangeFrom,
-            onChangeTo
+            onChangeTo,
+            onSwitch
         } = this.props
 
-        return <div className={css.replacer}>
-            <Switch checked={true}/>
+
+        return <div className={active ? css.replacer : `${css.replacer} ${css.inactive}`}>
+            <Switch checked={true} onSwitch={onSwitch}/>
             <label className={css.label}>
-                <input value={from} onChange={e => onChangeFrom(e.target.value)}/>
+                <input value={from} onChange={e => onChangeFrom(e.target.value)} disabled={!active}/>
             </label>
             <label className={css.label}>
-                <input value={to} onChange={e => onChangeTo(e.target.value)}/>
+                <input value={to} onChange={e => onChangeTo(e.target.value)} disabled={!active}/>
             </label>
-            <Checkbox checked={true} label="g" onChange={this.onCheckG}/>
-            <Checkbox checked={true} label="i" onChange={this.onCheckI}/>
-            <Checkbox checked={true} label="m" onChange={this.onCheckM}/>
+            {
+                ['g', 'i', 'm'].map(flag => <Checkbox key={flag} checked={mods.includes(flag)} label={flag} onChange={this['onCheck' + flag.toUpperCase()]} disabled={!active}/>)
+            }
         </div>
     }
 }

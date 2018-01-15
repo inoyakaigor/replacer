@@ -18,7 +18,7 @@
     right: 0;
     bottom: 0;
     border-radius: 18px;
-    background-color: #ccc;
+    background-color: var(--theme-second-color);
     transition: .3s;
 }
 
@@ -38,8 +38,16 @@ input:checked + .slider {
     background-color: var(--theme-main-color);
 }
 
+.disabled input:checked + .slider {
+    background-color: var(--theme-second-color);
+}
+
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px var(--theme-main-color);
+}
+
+.disabled input:focus + .slider {
+    box-shadow: 0 0 1px var(--theme-second-color);
 }
 
 input:checked + .slider:before {

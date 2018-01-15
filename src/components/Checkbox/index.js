@@ -15,8 +15,8 @@ export default class Checkbox extends Component {
     }
 
     render () {
-        return <label className={css.checkbox}>
-                <input type='checkbox' onChange={this.onChange} checked={this.state.checked}/>
+        return <label className={this.props.disabled ? `${css.checkbox} ${css.disabled}` : css.checkbox}>
+                <input type='checkbox' onChange={this.onChange} checked={this.state.checked} disabled={this.props.disabled}/>
                 <svg className={css.icon} viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg">
                     <polyline className={css.tick} points="0.2608 3.9 3.1312 6 7.3016 0.3"/>
                 </svg>

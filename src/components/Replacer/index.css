@@ -1,6 +1,12 @@
 .replacer {
     display: flex;
     align-items: center;
+    justify-content: center;
+    transition-duration: 0.3s;
+}
+
+.inactive {
+    background-color: var(--theme-second-color);
 }
 
 .replacer .label {

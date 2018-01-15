@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Replacers from 'Replacers'
 import Textareas from 'Textareas'
 
-const replacer = {from: '', to: ''}
+const replacer = {active: true, from: '', to: '', mods: 'gi'}
 
 export default class App extends Component {
     constructor() {
@@ -41,10 +41,21 @@ export default class App extends Component {
 
     onChangeFrom = (index, value) => this.onChangeReplacer(index, value, 'from' )
     onChangeTo = (index, value) => this.onChangeReplacer(index, value, 'to')
+    onChangeActive = (index, checked) => this.onChangeReplacer(index, checked, 'active')
+    onChangeMods = (index, mods) => this.onChangeReplacer(index, mods, 'mods')
+
+
+    onCheckModificator = (index, modificator, checked) => {
+        const replacer = [...this.state.replacers][index]
+        if (checked) {
+            this.onChangeMods(index, replacer.mods ? replacer.mods + modificator : modificator)
+        } else {
+            this.onChangeMods(index, replacer.mods ? replacer.mods.split(modificator).join('') : '')
+        }
+
+    }
 
     onChangeInput = ({target: {value}}) => this.setState({input: value})
-
-    onCheckModificator = (index, modificator, checked) => {console.log(index, modificator, checked)}
 
     processText = () => {
         let output = ''
@@ -54,6 +65,8 @@ export default class App extends Component {
         output = input
 
         replacers.forEach(replacer => {
+            if (!replacer.active) return
+
             let replacerTo = replacer.to
             if (/\\n/.test(replacer.to))
                 replacerTo = replacer.to.split('\\n').join(n)
@@ -61,7 +74,7 @@ export default class App extends Component {
             if (/\\r/.test(replacer.to))
                 replacerTo = replacer.to.split('\\r').join(r)
 
-            output = output.replace(new RegExp(replacer.from, 'gi'), replacerTo)
+            output = output.replace(new RegExp(replacer.from, replacer.mods ? replacer.mods : 'gi'), replacerTo)
         })
 
         this.setState({output})
@@ -75,7 +88,8 @@ export default class App extends Component {
                 addReplacer: this.addReplacer,
                 onChangeFrom: this.onChangeFrom,
                 onChangeTo: this.onChangeTo,
-                onCheckModificator: this.onCheckModificator
+                onCheckModificator: this.onCheckModificator,
+                onSwitch: this.onChangeActive
         }
 
         const textareasProps = {

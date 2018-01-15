@@ -11,16 +11,17 @@ export default class Replacers extends Component {
             replacers,
             onChangeFrom,
             onChangeTo,
-            onCheckModificator
+            onCheckModificator,
+            onSwitch
         } = this.props
 
         const replacersList = replacers.map((replacer, index) =>
             <Replacer
+                {...replacer}
                 key={index}
-                from={replacer.from}
-                to={replacer.to}
                 onChangeFrom={value => onChangeFrom(index, value)}
                 onChangeTo={value => onChangeTo(index, value)}
+                onSwitch={checked => onSwitch(index, checked)}
                 onCheckModificator={(modificator, checked) => onCheckModificator(index, modificator, checked)}
             />
         )

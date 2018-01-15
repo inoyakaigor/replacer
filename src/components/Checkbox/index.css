@@ -17,9 +17,13 @@ label.checkbox .label {
     font-size: 12px
 }
 
-label > input:checked + svg > polyline.tick{
+label > input:checked + svg > polyline.tick {
     stroke-dashoffset: 0;
     stroke: var(--theme-main-color);
+}
+
+label.disabled > input:checked + svg > polyline.tick {
+    stroke: var(--theme-second-color);
 }
 
 .icon {
@@ -29,6 +33,7 @@ label > input:checked + svg > polyline.tick{
     padding: 0.1rem;
     border: 2px solid var(--theme-second-color);
     border-radius: 2px;
+    transition: border-color;
 }
 
 .tick {
