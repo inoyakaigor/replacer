@@ -12,6 +12,7 @@
     user-select: none;
 }
 
-.button:focus {
+.button:focus,
+.button:hover {
     outline: 1px solid var(--theme-main-color);
 }
