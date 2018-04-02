@@ -25,15 +25,20 @@ export default class Replacers extends Component {
                 onCheckModificator={(modificator, checked) => onCheckModificator(index, modificator, checked)}
             />
         )
-        return <section className={css.replacers}>
+        return <section className={css.container}>
             <header className={css.header}>
                 <h2 className={css.change}>Пошаговая обработка текста регулярками</h2>
                 <div className={css.from}>Что</div>
                 <div className={css.to}>Чем</div>
             </header>
-            {replacersList}
+            <div className={css.replacers}>
+                {replacersList}
+            </div>
             <ButtonWrapper>
-                <Button key='button' onClick={this.props.addReplacer}>
+                <Button key='clean-button' onClick={this.props.clean}>
+                    🗑&nbsp;Очистить
+                </Button>
+                <Button key='add-rule-button' onClick={this.props.addReplacer}>
                     <span>➕</span>&nbsp;Добавить правило замены
                 </Button>
             </ButtonWrapper>

@@ -10,6 +10,11 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    margin: 0 5px;
+}
+
+.button:last-of-type {
+    margin-right: 0px;
 }
 
 .button:focus,

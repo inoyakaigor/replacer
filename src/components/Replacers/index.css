@@ -22,10 +22,15 @@
     width: calc(50% - var(--default-margin));
 }
 
-.replacers {
+.container {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     width: var(--app-width);
     margin: 0 auto;
+}
+
+.replacers {
+    max-height: 35vh;
+    overflow-y: auto;
 }

@@ -19,7 +19,12 @@ export default class App extends Component {
     getReplacers = () => {
         const savedReplacers = localStorage.getItem('replacers')
         if (savedReplacers)
-            return JSON.parse(savedReplacers)
+            try {
+                return JSON.parse(savedReplacers)
+            } catch (e) {
+                alert(`Сохранённые данные повреждены!`)
+                return [{...replacer}]
+            }
         else
             return [{...replacer}]
     }
@@ -52,8 +57,9 @@ export default class App extends Component {
         } else {
             this.onChangeMods(index, replacer.mods ? replacer.mods.split(modificator).join('') : '')
         }
-
     }
+
+    clean = () => localStorage.clear()
 
     onChangeInput = ({target: {value}}) => this.setState({input: value})
 
@@ -89,7 +95,8 @@ export default class App extends Component {
                 onChangeFrom: this.onChangeFrom,
                 onChangeTo: this.onChangeTo,
                 onCheckModificator: this.onCheckModificator,
-                onSwitch: this.onChangeActive
+                onSwitch: this.onChangeActive,
+                clean: this.clean
         }
 
         const textareasProps = {
