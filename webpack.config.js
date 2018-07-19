@@ -38,7 +38,8 @@ module.exports = {
     entry: __dirname + '/src/index.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'static')
+        path: path.resolve(__dirname, 'static'),
+        publicPath: 'static'
     },
     devtool: 'source-map',
     stats: {
