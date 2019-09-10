@@ -41,7 +41,6 @@ module.exports = {
         path: path.resolve(__dirname, 'static'),
         publicPath: 'static'
     },
-    devtool: 'source-map',
     stats: {
         colors: true,
         modules: true,
