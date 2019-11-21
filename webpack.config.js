@@ -11,8 +11,10 @@ const HtmlWebpackPluginConfig = {
 
 const FaviconsWebpackPluginConfig = {
     logo: './favicon.png',
-    persistentCache: true,
-    prefix: 'icons/',
+    cache: true,
+    prefix: '',
+    publicPath: 'static/',
+    // outputPath: 'static/',
     inject: true,
     theme_color: '#4FD1D9',
     background: '#4FD1D9',
@@ -20,7 +22,7 @@ const FaviconsWebpackPluginConfig = {
         android: true,
         appleIcon: true,
         appleStartup: true,
-        coast: false,
+        coast: true,
         favicons: true,
         firefox: true,
         opengraph: true,
