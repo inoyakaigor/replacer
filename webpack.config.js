@@ -1,12 +1,12 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const HtmlWebpackPluginConfig = {
-  template: __dirname + '/index.html',
-  filename: 'index.html',
-  inject: 'body'
+    template: __dirname + '/index.html',
+    filename: 'index.html',
+    inject: 'body'
 }
 
 const FaviconsWebpackPluginConfig = {
@@ -17,21 +17,22 @@ const FaviconsWebpackPluginConfig = {
     theme_color: '#4FD1D9',
     background: '#4FD1D9',
     icons: {
-      android: true,
-      appleIcon: true,
-      appleStartup: true,
-      coast: false,
-      favicons: true,
-      firefox: true,
-      opengraph: true,
-      twitter: true,
-      yandex: true,
-      windows: true
+        android: true,
+        appleIcon: true,
+        appleStartup: true,
+        coast: false,
+        favicons: true,
+        firefox: true,
+        opengraph: true,
+        twitter: true,
+        yandex: true,
+        windows: true
     }
 }
 
-const ExtractTextPluginConfig = {
-    filename: 'styles.css'
+const MiniCssExtractPluginConfig = {
+    filename: '[name].css',
+    chunkFilename: '[name].css',
 }
 
 module.exports = {
@@ -56,16 +57,19 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: {
-                        loader: "css-loader",
-                        query: {
-                            modules: true,
-                            localIdentName: '[name]-[local]--[hash:base64:5]'
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]--[local]'
+                            },
+                            localsConvention: 'dashes',
                         }
                     }
-                })
+                ]
             },
             {
                 test: /\.(png|svg|jpe?g|gif)$/,
@@ -82,9 +86,10 @@ module.exports = {
     plugins: [
         new FaviconsWebpackPlugin(FaviconsWebpackPluginConfig),
         new HtmlWebpackPlugin(HtmlWebpackPluginConfig),
-        new ExtractTextPlugin(ExtractTextPluginConfig)
+        new MiniCssExtractPlugin(MiniCssExtractPluginConfig),
+
     ],
     resolve: {
-      modules: [path.resolve(__dirname, "src/components/"), "node_modules"]
+        modules: [path.resolve(__dirname, "src/components/"), "node_modules"]
     }
 }
